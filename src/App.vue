@@ -1,19 +1,39 @@
 <template>
   <div id="app">
-    <img alt="Vue logo" src="./assets/logo.png">
-    <HelloWorld msg="Welcome to Your Vue.js App"/>
+    <p>General Knowledge!</p>
+    <p>{{ quiz[4].correct_answer }}</p>
+    <ul>
+      <li v-for="item in quiz">{{ item.question}}</li>
+    </ul>
+
+
   </div>
+  <!-- loop over using key, index look at object.key -->
 </template>
 
 <script>
-import HelloWorld from './components/HelloWorld.vue'
+
 
 export default {
   name: 'app',
-  components: {
-    HelloWorld
+  data() {
+    return {
+      quiz: {}
+
+    }
+  },
+
+  mounted() {
+    fetch('https://opentdb.com/api.php?amount=10&category=9&type=boolean')
+      .then(response => response.json())
+      .then(quiz => this.quiz = quiz.results )
   }
+
 }
+
+
+
+
 </script>
 
 <style>
