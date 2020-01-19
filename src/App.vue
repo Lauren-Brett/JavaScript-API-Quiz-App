@@ -22,7 +22,6 @@ export default {
   data() {
     return {
       questions: [],
-      // selectedQuestion: null
     }
   },
   mounted() {
@@ -38,8 +37,8 @@ export default {
       .then(questions => this.questions = questions)
 
      eventBus.$on('question-answered', (answer) => {
-       console.log(answer);
        
+      
      })
   },
   components: {
