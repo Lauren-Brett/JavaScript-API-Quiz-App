@@ -1,12 +1,11 @@
 <template>
   <section>
-      <p>hello</p>
-      <!-- <ul>
+     <ul>
         
-        <quiz-questions-list v-for="item in quiz"> {{ item.question }}</quiz-questions-list>
+         <li v-for="item in quiz" :value="item"> 
+            {{ item.question }}</li>
     
-      </ul> -->
-
+      </ul>
   </section>
 
 </template>
@@ -15,9 +14,10 @@
 export default {
     name: 'quiz-questions',
     props: ['quiz'],
-    components: {
-        'quiz-questions-list': QuizQuestionsList
-    }
+
+    // components: {
+    //     "quiz-questions": QuizQuestionsList,
+    // }
 
 }
 
