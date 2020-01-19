@@ -1,6 +1,8 @@
 <template>
-  <div>
-   
+  <div v-if="object">
+    <li v-on:click="handleClick">{{ object.difficulty}}</li>
+   <!-- // the list is rendered, 
+   //display the state of its difficulty   -->
   </div>
 </template>
 
@@ -12,10 +14,15 @@ export default {
     name: 'question-select',
     props: ['object'],
     methods: {
-  
-       }
+        // handleClick() {
+        //   eventBus.$emit('question-hit', this.object)
+        }
 
- }
+    }
+      
+  
+
+ 
 
     
 

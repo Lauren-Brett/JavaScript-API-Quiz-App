@@ -3,6 +3,7 @@
       
     <ul>
         <li v-for="object in quiz" >{{ object.question }}</li>
+         <!-- <question-select v-for="object in quiz" >{{ object.question }}</question-select> -->
     </ul>
    
 </section>
