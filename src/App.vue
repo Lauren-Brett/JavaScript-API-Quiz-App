@@ -1,25 +1,22 @@
 <template>
   <div id="app">
     <p>General Knowledge!</p>
+    <question-list :quiz='quiz'</question-list>
+    <!-- <difficulty-selected ></difficulty-selected> -->
+
     <ul>
-      <li v-for="item in quiz">{{ item.difficulty}}</li>
-      
+      <difficulty-selected v-for="object in quiz">{{ object.question}}</difficulty-selected>
     </ul>
 
     
-    <!-- <div class="question-container">
-      <quiz-questions :quiz='quiz'></quiz-questions>
-    </div> -->
-   
-
-
-
   </div>
   <!--  look at object.key -->
 </template>
 
 <script>
 
+import QuestionList from './components/QuestionList.vue';
+import DifficultySelect from './components/DifficultySelect.vue';
 
 
 export default {
@@ -27,7 +24,6 @@ export default {
   data() {
     return {
       quiz: []
-
     }
   },
 
@@ -38,9 +34,17 @@ export default {
       .then(quiz => this.quiz = quiz.results )
   },
 
+  components: {
+    'question-list': QuestionList,
+    'difficulty-selected': DifficultySelect
+
+  }
+
+  }
+
  
 
-}
+
 
 
 
