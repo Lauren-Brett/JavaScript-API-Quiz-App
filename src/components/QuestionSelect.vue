@@ -13,19 +13,14 @@ import { eventBus } from '../main.js';
 
 export default {
     name: 'question-select',
-    props: ['question'],
-    data: function(){
-      return {
-        isCorrectAnswer: null
-      }
-    },
+    props: ['question', 'isCorrectAnswer'],
     methods: {
         handleClick(choice) {
-          this.isCorrectAnswer = this.question.correct_answer === choice
+
 
           eventBus.$emit('question-answered', {
             choice: choice,
-            questionId: this.question.id 
+            id: this.question.id 
           })
         }     
     },

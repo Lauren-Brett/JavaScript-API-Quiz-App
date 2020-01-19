@@ -31,15 +31,12 @@ export default {
         return { 
           ...question, 
           text: question.question,
-          id: Date.now()
+          id: Math.random()
         }
       }))
       .then(questions => this.questions = questions)
 
-     eventBus.$on('question-answered', (answer) => {
-       
-      
-     })
+     
   },
   components: {
     'questions-list': QuestionsList
