@@ -1,9 +1,11 @@
 <template>
-  <div v-if="object">
-    <li v-on:click="handleClick">{{ object.difficulty}}</li>
+    <li v-if="question">
+      <p>{{ question.text }}</p>
+      <button v-on:click="handleClick('True')">True</button>
+      <button v-on:click="handleClick('False')">False</button>
+    </li>
    <!-- // the list is rendered, 
    //display the state of its difficulty   -->
-  </div>
 </template>
 
 <script>
@@ -12,13 +14,18 @@ import { eventBus } from '../main.js';
 
 export default {
     name: 'question-select',
-    props: ['object'],
+    props: ['question'],
     methods: {
-        // handleClick() {
+        handleClick(choice) {
+          eventBus.$emit('question-answered', {
+            choice: choice,
+            questionId: this.question.id 
+          })
+        }    
         //   eventBus.$emit('question-hit', this.object)
-        }
-
     }
+
+  }
       
   
 

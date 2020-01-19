@@ -2,7 +2,7 @@
   <div id="app">
     <p>General Knowledge!</p>
       
-    <questions-list :quiz='quiz'></questions-list>
+    <questions-list :questions='questions'></questions-list>
     <!-- <question-select :object='selectedQuestion'></question-select> -->
 
 
@@ -12,6 +12,7 @@
 
 <script>
 
+import { eventBus } from './main.js';
 import QuestionsList from './components/QuestionsList.vue';
 // import QuestionSelect from './components/QuestionSelect.vue';
 
@@ -20,27 +21,33 @@ export default {
   name: 'app',
   data() {
     return {
-      quiz: [],
+      questions: [],
       // selectedQuestion: null
     }
   },
-
-
   mounted() {
     fetch('https://opentdb.com/api.php?amount=10&category=9&type=boolean')
       .then(response => response.json())
-      .then(quiz => this.quiz = quiz.results )
+      .then(questions => questions.results.map((question, index) => {
+        return { 
+          ...question, 
+          text: question.question,
+          id: Date.now()
+        }
+      }))
+      .then(questions => this.questions = questions)
 
-      // eventBus.$on('question-hit', (object) =>
-      // this.selectedQuestion = object)
+     eventBus.$on('question-answered', (answer) => {
+       console.log(answer);
+       
+     })
   },
-
   components: {
     'questions-list': QuestionsList
     // 'question-select': QuestionSelect 
   }
 
-  }
+}
 
  
 

@@ -1,11 +1,8 @@
 <template>
 <section class="list-questions">
-      
     <ul>
-        <li v-for="object in quiz" >{{ object.question }}</li>
-         <!-- <question-select v-for="object in quiz" >{{ object.question }}</question-select> -->
-    </ul>
-   
+         <question-select v-for="question in questions" :question="question"></question-select>
+    </ul>  
 </section>
   
 </template>
@@ -16,7 +13,7 @@ import QuestionSelect from './QuestionSelect.vue';
 
 export default {
     name: 'questions-list',
-    props: ['quiz'],
+    props: ['questions'],
     components: {
         'question-select': QuestionSelect
     }
