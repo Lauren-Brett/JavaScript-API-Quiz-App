@@ -1,24 +1,22 @@
 <template>
   <div id="app">
     <p>General Knowledge!</p>
-    <p>{{ quiz[4].correct_answer }}</p>
-    <ul>
-      <li v-for="item in quiz">{{ item.question}}</li>
-    </ul>
-
-
+    <p>{{quiz}}</p>
+    
+   
   </div>
   <!--  look at object.key -->
 </template>
 
 <script>
 
+import QuizQuestionsList from './components/QuizQuestionsList.vue';
 
 export default {
   name: 'app',
   data() {
     return {
-      quiz: {}
+      quiz: []
 
     }
   },
