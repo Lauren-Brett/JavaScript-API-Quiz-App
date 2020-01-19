@@ -1,23 +1,26 @@
 <template>
   <div id="app">
     <p>General Knowledge!</p>
-    <!-- <p>{{quiz}}</p> -->
+    <ul>
+      <li v-for="item in quiz">{{ item.difficulty}}</li>
+      
+    </ul>
+
     
-     <ul>
-        
-         <li v-for="item in quiz" :value="item"> 
-            {{ item.question }}</li>
-    
-      </ul>
-    
+    <!-- <div class="question-container">
+      <quiz-questions :quiz='quiz'></quiz-questions>
+    </div> -->
    
+
+
+
   </div>
   <!--  look at object.key -->
 </template>
 
 <script>
 
-import QuizQuestionsList from './components/QuizQuestionsList.vue';
+
 
 export default {
   name: 'app',
@@ -35,9 +38,7 @@ export default {
       .then(quiz => this.quiz = quiz.results )
   },
 
-  comments: {
-    "questions-list": QuizQuestionsList
-  }
+ 
 
 }
 
